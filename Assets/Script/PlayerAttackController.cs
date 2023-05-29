@@ -17,11 +17,13 @@ public class PlayerAttackController : MonoBehaviour
     public float TotalAttackDamage;
     public float NormalDamage;
     public float CurrentPlayerHeath = 100f;
-
+    public ParticleSystem burstParticles;
+    public HealthManager health;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        health.SetMaxHealth(CurrentPlayerHeath);
     }
 
     // Update is called once per frame
@@ -105,5 +107,12 @@ public class PlayerAttackController : MonoBehaviour
     public virtual void DamagePlayer(float amount)
     {
         CurrentPlayerHeath -= amount;
+        anim.SetTrigger("Hit");
+        health.SetHealth(CurrentPlayerHeath);
+        if (CurrentPlayerHeath <= 0.0f)
+        {
+            Destroy(gameObject);
+            Instantiate(burstParticles, transform.position, transform.rotation);
+        }
     }
 }
