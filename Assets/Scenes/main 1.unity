@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 83834828}
   - component: {fileID: 83834830}
   - component: {fileID: 83834831}
+  - component: {fileID: 83834832}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -152,11 +153,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83834824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.42, y: -3.58, z: 0}
+  m_LocalPosition: {x: -1.984, y: -3.58, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 410891185}
+  - {fileID: 1096532626}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -296,6 +298,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &83834832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83834824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f2eba142891f041901b37021f25252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackInputRecieved: 0
+  AllowedToAttack: 1
+  PlayerIsAttacking: 0
+  anim: {fileID: 83834831}
+  AttackRadius: 0.5
+  AttackPosition: {fileID: 1096532626}
+  WhatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
+  TotalAttackDamage: 10
+  NormalDamage: 10
+  CurrentPlayerHeath: 100
 --- !u!1 &268733185
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &419291623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +557,7 @@ MonoBehaviour:
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -1112,6 +1138,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1096532625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096532626}
+  m_Layer: 6
+  m_Name: AttackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1096532626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096532625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.112, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 83834825}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123290336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1123290337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,7 +1393,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1657f8b48fb329d489f265fd99528fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPosition: {fileID: 0}
+  PlayerPosition: {fileID: 83834825}
+  CurrentEnemyHeath: 100
+  EnemyAnim: {fileID: 0}
+  FireballGO: {fileID: 7682647058219279679, guid: 8df6c66bbd1e9624da6d70ef61186a4a, type: 3}
+  minimumFiringDistance: 2
+  CalculatedTime: 0
+  TimeBtwEachShoot: 2
 --- !u!95 &1123290345
 Animator:
   serializedVersion: 5
